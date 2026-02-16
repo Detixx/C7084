@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Küldő oldal – Új telefon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav>
+            <a href="index.html">Főoldal</a>
+            <a href="kuldo.html" class="active">Küldés</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1>Új telefon rögzítése</h1>
+        <div class="form-container">
+            <form id="telefon-form" class="telefon-form">
+                <label for="marka">Márka</label>
+                <input type="text" id="marka" name="marka" required maxlength="50" placeholder="pl. Apple">
+
+                <label for="kiadas">Kiadás</label>
+                <input type="text" id="kiadas" name="kiadas" required maxlength="50" placeholder="pl. iPhone 15">
+
+                <label for="tipus">Típus</label>
+                <input type="text" id="tipus" name="tipus" required maxlength="80" placeholder="pl. Pro 256GB">
+
+                <label for="ar">Ár (Ft)</label>
+                <input type="number" id="ar" name="ar" required min="1" step="1" placeholder="pl. 549990">
+
+                <button type="submit" class="btn-submit">Küldés</button>
+            </form>
+            <div id="form-üzenet" class="form-üzenet" aria-live="polite"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>TelefonBolt</p>
+    </footer>
+
+    <script src="js/form.js"></script>
+</body>
+</html>

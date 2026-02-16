@@ -1,0 +1,273 @@
+/* Dark theme + glass (glassmorphism) */
+
+:root {
+    --bg: #0f172a;
+    --bg-gradient: radial-gradient(ellipse at top, #1e293b 0%, #0f172a 50%, #020617 100%);
+    --glass: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-strong: rgba(30, 41, 59, 0.75);
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: 0.2s ease;
+    --blur: 12px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header – glass */
+.header {
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header nav {
+    display: flex;
+    gap: 0.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header a {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    transition: color var(--transition), background var(--transition);
+}
+
+.header a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.header a.active {
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.15);
+}
+
+/* Main */
+.main {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.main h1 {
+    margin: 0 0 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    text-align: center;
+}
+
+/* Telefonok grid – kártyák glass */
+.telefonok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+}
+
+.telefon-kartya {
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    min-height: 140px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.telefon-kartya:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: var(--glass-strong);
+}
+
+.telefon-kartya .marka {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+.telefon-kartya .kiadas {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.telefon-kartya .tipus {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.telefon-kartya .ar {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+
+.loading,
+.error {
+    grid-column: 1 / -1;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    color: var(--text-muted);
+    border: 1px solid var(--glass-border);
+}
+
+.error {
+    color: #f87171;
+    background: rgba(127, 29, 29, 0.4);
+    border-color: rgba(248, 113, 113, 0.2);
+}
+
+/* Küldő oldal – űrlap glass, középen */
+.form-container {
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border-radius: var(--radius);
+    padding: 2rem;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--glass-border);
+}
+
+.telefon-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.telefon-form label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--text);
+}
+
+.telefon-form input {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    background: rgba(15, 23, 42, 0.5);
+    color: var(--text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.telefon-form input::placeholder {
+    color: #64748b;
+}
+
+.telefon-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.btn-submit {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition), transform 0.1s ease;
+}
+
+.btn-submit:hover {
+    background: var(--accent-hover);
+}
+
+.btn-submit:active {
+    transform: scale(0.98);
+}
+
+.btn-submit:disabled {
+    background: #475569;
+    color: var(--text-muted);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-üzenet {
+    margin-top: 1rem;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.form-üzenet.siker {
+    color: #4ade80;
+}
+
+.form-üzenet.hiba {
+    color: #f87171;
+}
+
+/* Footer – glass */
+.footer {
+    background: var(--glass);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    padding: 1rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: auto;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer p {
+    margin: 0;
+}
